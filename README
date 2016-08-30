@@ -27,3 +27,76 @@ Sunshine!
 	http://www.lede-project.org
 
 
+Compile packages from sources
+ProBackup-nl edited this page 22 days ago · 14 revisions
+Pages 35
+
+    Home
+    Changelog
+    Compile packages from sources
+    Install on Android
+    Install on Asus stock firmware
+    Install on ASUSTOR NAS
+    Install on DD WRT
+    Install on Oleg's firmware
+    Install on Padavan firmware
+    Install on QNAP NAS
+    Install on RMerlin firmware
+    Install on Synology NAS
+    Install on the TomatoUSB
+    Self installation of perl modules
+    Self installation of python modules
+    Show 20 more pages…
+
+Clone this wiki locally
+
+Make sure that there is at least 7 GB of free disk space.
+Install Dependencies
+
+Entware-ng uses OpenWrt Buildroot, please install its dependencies (=step 1, without subversion mercurial) first.
+Clone repo
+
+git clone https://github.com/Entware-ng/Entware-ng.git
+cd Entware-ng
+
+Update package feeds
+
+make package/symlinks
+
+Pick up one of supported platform
+
+...by copying buildroot config file from configs folder. Example below uses MIPS platform config:
+
+cp configs/mipselsf.config .config
+
+Rebuild repo
+
+make 
+
+Please refer OpenWrt buildroot documentation for more details.
+Tips
+
+You can build one package (squid in example) with all its dependencies by:
+
+make package/squid/compile
+
+If something goes wrong, turn on verbose mode by adding V=s:
+
+make package/tmux/compile V=s
+
+You can speed up compilation on multiprocessor systems by running several build threads simultaneously by adding -jN:
+
+make -j4 package/compile
+
+You can run make in several steps
+
+make tools/install
+make toolchain/install
+make target/compile
+make package/compile
+
+This can also be used in case you don't need to build all packages. Replace the last command with the command to build the package you need.
+Error in tools or toolchain
+
+In case there is an error in the tools/install or toolchain/install phase, and you do change your configuration, remember to run a make dirclean instead of make clean. To clean only one specific part you can run a make toolchain/uClibc/headers/clean for example.
+
