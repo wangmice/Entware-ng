@@ -40,6 +40,7 @@ endef
 CONFIGURE_ARGS+= \
 	--with-kbuild="$(LINUX_DIR)" \
 	--with-xtlibdir="/usr/lib/iptables" \
+	--with-gnu-ld
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
