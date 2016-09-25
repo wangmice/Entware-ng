@@ -136,6 +136,8 @@ define Package/iptables/install
 	$(CP) $(PKG_INSTALL_DIR)/opt/lib/*.so* $(1)/opt/lib/
 	$(CP) $(PKG_BUILD_DIR)/extensions/*.so $(1)/opt/lib/
 	$(CP) $(PKG_INSTALL_DIR)/opt/lib/iptables/*.so* $(1)/opt/lib/iptables/
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/* $(STAGING_DIR)/opt/lib/
+	$(CP) $(PKG_INSTALL_DIR)/opt/include/* $(STAGING_DIR)/opt/include/
 endef
 
 $(eval $(call BuildPackage,iptables))
