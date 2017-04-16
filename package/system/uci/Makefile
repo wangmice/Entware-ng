@@ -79,8 +79,10 @@ define Build/InstallDev
 	$(INSTALL_DIR) $(1)/opt/usr/include
 	$(CP) $(PKG_BUILD_DIR)/uci{,_config,_blob,map}.h $(1)/opt/usr/include
 	$(INSTALL_DIR) $(1)/opt/usr/lib
+	$(INSTALL_DIR) $(1)/opt/lib
 	$(CP) $(PKG_BUILD_DIR)/libuci.so* $(1)/opt/usr/lib
 	$(CP) $(PKG_BUILD_DIR)/libucimap.a $(1)/opt/usr/lib
+	$(CP) $(PKG_BUILD_DIR)/libucimap.a $(1)/opt/lib/libuci.a
 endef
 
 $(eval $(call BuildPackage,uci))

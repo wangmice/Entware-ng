@@ -1,19 +1,23 @@
 #
 # Copyright (C) 2015-2016 wongsyrone
 #
-# This is free software, licensed under the GNU General Public License v3.
+# This is free software, licensed under the GNU General Public License v2.
 # See /LICENSE for more information.
 #
+# Partial taken from
+# https://github.com/wongsyrone/openwrt-Pcap_DNSProxy/blob/master/Makefile
+#
+
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pcap-dnsproxy
-PKG_VERSION:=0.4.8.5
+PKG_VERSION:=0.4.8.6
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/chengr28/Pcap_DNSProxy.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=7a41ebc0eb0165ec9990ee82e13386d77cfcca2b
+PKG_SOURCE_VERSION:=055a4cb0264cf8d694e809f2d0b1f9498bead163
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 CMAKE_INSTALL:=1
 
@@ -165,7 +169,7 @@ define Package/pcap-dnsproxy/install
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/Source/Auxiliary/ExampleConfig/Hosts.ini $(1)/opt/etc/pcap-dnsproxy/Hosts.conf
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/Source/Auxiliary/ExampleConfig/IPFilter.ini $(1)/opt/etc/pcap-dnsproxy/IPFilter.conf
 	$(INSTALL_CONF) $(PKG_BUILD_DIR)/Source/Auxiliary/ExampleConfig/Routing.txt $(1)/opt/etc/pcap-dnsproxy/Routing.txt
-	$(INSTALL_CONF) ./files/configs/WhiteList.txt $(1)/opt/etc/pcap-dnsproxy/WhiteList.txt
+	$(INSTALL_CONF) $(PKG_BUILD_DIR)/Source/Auxiliary/ExampleConfig/WhiteList.txt $(1)/opt/etc/pcap-dnsproxy/WhiteList.txt
 endef
 
 
