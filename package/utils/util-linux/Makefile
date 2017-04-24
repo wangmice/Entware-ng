@@ -238,16 +238,16 @@ endef
 
 define Package/ionice
 $(call Package/util-linux/Default)
-  TITLE:=ionice - get/set program io scheduling class and priority 
+  TITLE:=ionice - get/set program io scheduling class and priority
 endef
 
 define Package/ionice/description
- This program sets or gets the io scheduling class and priority for a program. If no arguments or just -p is given, ionice will query the current io scheduling class and priority for that process. 
+ This program sets or gets the io scheduling class and priority for a program. If no arguments or just -p is given, ionice will query the current io scheduling class and priority for that process.
 endef
 
 define Package/fsfreeze
 $(call Package/util-linux/Default)
-  TITLE:=fsfreeze - suspends and resumes access to an filesystem 
+  TITLE:=fsfreeze - suspends and resumes access to an filesystem
 endef
 
 define Package/fsfreeze/description
@@ -474,7 +474,7 @@ CONFIGURE_ARGS += \
 	--disable-more		\
 	--with-ncursesw
 
-TARGET_CFLAGS += $(FPIC) -std=gnu99
+TARGET_CFLAGS += $(FPIC) -std=gnu99 -lm
 
 TARGET_LDFLAGS += $(if $(CONFIG_TARGET_mipselsf),-lm)
 
