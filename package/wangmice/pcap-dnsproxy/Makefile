@@ -11,13 +11,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pcap-dnsproxy
-PKG_VERSION:=0.4.8.6
+PKG_VERSION:=0.4.9.4
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/chengr28/Pcap_DNSProxy.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=055a4cb0264cf8d694e809f2d0b1f9498bead163
+PKG_SOURCE_VERSION:=9a897ac63b34eae98d2d68d3a8ab4c797e992496
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 CMAKE_INSTALL:=1
 
@@ -116,11 +116,11 @@ TARGET_CFLAGS += \
 	-I$(STAGING_DIR)/opt/include
 
 define Package/pcap-dnsproxy/conffiles
-/etc/pcap-dnsproxy/Config.conf
-/etc/pcap-dnsproxy/Hosts.conf
-/etc/pcap-dnsproxy/IPFilter.conf
-/etc/pcap-dnsproxy/Routing.txt
-/etc/pcap-dnsproxy/WhiteList.txt
+/opt/etc/pcap-dnsproxy/Config.conf
+/opt/etc/pcap-dnsproxy/Hosts.conf
+/opt/etc/pcap-dnsproxy/IPFilter.conf
+/opt/etc/pcap-dnsproxy/Routing.txt
+/opt/etc/pcap-dnsproxy/WhiteList.txt
 endef
 
 define Package/pcap-dnsproxy/postinst
