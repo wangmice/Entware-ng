@@ -54,17 +54,17 @@ CMAKE_OPTIONS = \
 
 define Package/ubus/install
 	$(INSTALL_DIR) $(1)/bin
-	$(CP) $(PKG_INSTALL_DIR)/usr/bin/ubus $(1)/bin/
+	$(CP) $(PKG_INSTALL_DIR)/opt/bin/ubus $(1)/bin/
 endef
 
 define Package/ubusd/install
 	$(INSTALL_DIR) $(1)/sbin
-	$(CP) $(PKG_INSTALL_DIR)/usr/sbin/ubusd $(1)/sbin/
+	$(CP) $(PKG_INSTALL_DIR)/opt/sbin/ubusd $(1)/sbin/
 endef
 
 define Package/libubus/install
 	$(INSTALL_DIR) $(1)/lib
-	$(CP) $(PKG_INSTALL_DIR)/usr/lib/*.so $(1)/lib/
+	$(CP) $(PKG_INSTALL_DIR)/opt/lib/*.so $(1)/lib/
 endef
 
 define Package/libubus-lua/install

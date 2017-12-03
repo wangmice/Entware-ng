@@ -1,0 +1,11 @@
+--- a/gcc/ubsan.c	2016-12-08 06:39:29.000000000 +0800
++++ b/gcc/ubsan.c	2017-12-01 15:26:35.499557242 +0800
+@@ -1471,7 +1471,7 @@
+ 
+   expanded_location xloc = expand_location (loc);
+   if (xloc.file == NULL || strncmp (xloc.file, "\1", 2) == 0
+-      || xloc.file == '\0' || xloc.file[0] == '\xff'
++      || xloc.file[0] == '\0' || xloc.file[0] == '\xff'
+       || xloc.file[1] == '\xff')
+     return false;
+ 
