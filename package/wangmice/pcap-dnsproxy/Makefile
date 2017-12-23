@@ -11,13 +11,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=pcap-dnsproxy
-PKG_VERSION:=0.4.9.4
+PKG_VERSION:=0.4.9.5
 PKG_RELEASE:=1
 
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_URL:=https://github.com/chengr28/Pcap_DNSProxy.git
 PKG_SOURCE_SUBDIR:=$(PKG_NAME)-$(PKG_VERSION)
-PKG_SOURCE_VERSION:=9a897ac63b34eae98d2d68d3a8ab4c797e992496
+PKG_SOURCE_VERSION:=66c9f5b8315725ad369439fe688c6dbbc999b5e4
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 CMAKE_INSTALL:=1
 
@@ -40,6 +40,7 @@ CMAKE_OPTIONS += \
 # Port 53 leads to dnsmasq startup failure.
 define Package/pcap-dnsproxy/config
 	config PACKAGE_pcap-dnsproxy_libpcap
+    depends on PACKAGE_pcap-dnsproxy
 		bool "Build with libpcap support.(Strongly recommended)"
 		default y
 		help
@@ -48,6 +49,7 @@ define Package/pcap-dnsproxy/config
 
 		  We strongly recommend to keep it as-is.
 	config PACKAGE_pcap-dnsproxy_libsodium
+    depends on PACKAGE_pcap-dnsproxy
 		bool "Build with libsodium support.(Recommended)"
 		default y
 		help
@@ -61,6 +63,7 @@ define Package/pcap-dnsproxy/config
 		help
 		  We recommend to keep it as-is.
 	config PCAP_DNSPROXY_LISTENPORT
+    depends on PACKAGE_pcap-dnsproxy
 		int "Listen Port, should NOT be 53"
 		default 1053
 		help
@@ -68,11 +71,13 @@ define Package/pcap-dnsproxy/config
 		  Note that you should NOT set the value to 53, which
 		  conflicts with DNSMasq in OpenWrt.
 	config PACKAGE_pcap-dnsproxy_procdinit
+    depends on PACKAGE_pcap-dnsproxy
 		bool "Ship with procd init script"
 		default n
 		help
 		  Use new procd init script.
 	config PACKAGE_pcap-dnsproxy_advancedoptions
+    depends on PACKAGE_pcap-dnsproxy
 		bool "Compile with advanced options. (for expert only)"
 		default n
 		help
