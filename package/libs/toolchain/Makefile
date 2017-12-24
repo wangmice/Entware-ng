@@ -432,12 +432,13 @@ LIBGCC_A=$(lastword $(wildcard $(TOOLCHAIN_DIR)/lib/gcc/*/*/libgcc_pic.a))
 LIBGCC_MAP=$(lastword $(wildcard $(TOOLCHAIN_DIR)/lib/gcc/*/*/libgcc.map))
 LIBGCC_SO=$(lastword $(wildcard $(TOOLCHAIN_DIR)/lib/libgcc_s.so.*))
 
+# $(TOOLCHAIN_DIR)/lib/libcrypt-*.so \
+# $(TOOLCHAIN_DIR)/lib/libm-*.so \
+# $(TOOLCHAIN_DIR)/lib/libpthread-*.so \
+
 define Build/Compile/uClibc
 	$(CP) \
 		$(TOOLCHAIN_DIR)/lib/libuClibc-*.so \
-		$(TOOLCHAIN_DIR)/lib/libcrypt-*.so \
-		$(TOOLCHAIN_DIR)/lib/libm-*.so \
-		$(TOOLCHAIN_DIR)/lib/libpthread-*.so \
 		$(PKG_BUILD_DIR)/
 endef
 ifneq ($(LIBGCC_SO),)
@@ -517,17 +518,17 @@ endif
 		$(TOOLCHAIN_DIR)/lib/libc.so.* \
 		$(TOOLCHAIN_DIR)/lib/libuClibc-$(LIBC_SO_VERSION).so \
 		$(1)/opt/lib/
-	for file in libuargp libcrypt libdl libm libutil libnsl libresolv; do \
-		$(CP) \
-			$(TOOLCHAIN_DIR)/lib/$$$$file.so* \
-			$(TOOLCHAIN_DIR)/lib/$$$$file-$(LIBC_SO_VERSION).so \
-			$(1)/opt/lib/; \
-	done
+	# for file in libuargp libcrypt libdl libm libutil libnsl libresolv; do \
+	# 	$(CP) \
+	# 		$(TOOLCHAIN_DIR)/lib/$$$$file.so* \
+	# 		$(TOOLCHAIN_DIR)/lib/$$$$file-$(LIBC_SO_VERSION).so \
+	# 		$(1)/opt/lib/; \
+	# done
 
+	# $(PKG_BUILD_DIR)/libm-* \
+	# $(PKG_BUILD_DIR)/libcrypt-* 
 	$(CP) \
 		$(PKG_BUILD_DIR)/libuClibc-* \
-		$(PKG_BUILD_DIR)/libm-* \
-		$(PKG_BUILD_DIR)/libcrypt-* \
 		$(1)/opt/lib/
   endef
 
@@ -560,10 +561,12 @@ endif
   define Package/libpthread/install
 	$(INSTALL_DIR) $(1)/opt/lib
   ifneq ($(CONFIG_USE_MUSL),y)
+  ifneq ($(CONFIG_USE_UCLIBC),y)
 	$(CP) \
 		$(TOOLCHAIN_DIR)/lib/libpthread.so.* \
 		$(TOOLCHAIN_DIR)/lib/libpthread-$(LIBC_SO_VERSION).so \
 		$(1)/opt/lib/
+  endif
   endif
   endef
 
@@ -582,10 +585,12 @@ endif
   define Package/librt/install
 	$(INSTALL_DIR) $(1)/opt/lib
   ifneq ($(CONFIG_USE_MUSL),y)
+  ifneq ($(CONFIG_USE_UCLIBC),y)
 	$(CP) \
 		$(TOOLCHAIN_DIR)/lib/librt.so.* \
 		$(TOOLCHAIN_DIR)/lib/librt-$(LIBC_SO_VERSION).so \
 		$(1)/opt/lib/
+  endif
   endif
   endef
 

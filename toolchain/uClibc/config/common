@@ -49,6 +49,7 @@ LDSO_SAFE_RUNPATH=y
 # LINUXTHREADS_NEW is not set
 # LINUXTHREADS_OLD is not set
 # UCLIBC_HAS_BACKTRACE is not set
+# UCLIBC_HAS_LINUXTHREADS is not set
 UCLIBC_HAS_THREADS_NATIVE=y
 # MALLOC is not set
 MALLOC_GLIBC_COMPAT=y
@@ -75,6 +76,7 @@ TARGET_SUBARCH=""
 # TARGET_lm32 is not set
 # TARGET_m68k is not set
 # TARGET_metag is not set
+# TARGET_aarch64 is not set
 # TARGET_microblaze is not set
 # TARGET_mips is not set
 # TARGET_nds32 is not set
@@ -191,6 +193,8 @@ UCLIBC_HAS_TZ_FILE_READ_MANY=y
 UCLIBC_HAS_UTMPX=y
 UCLIBC_HAS_UTMP=y
 UCLIBC_HAS_WCHAR=y
+# UCLIBC_HAS_LIBICONV is not set
+# UCLIBC_HAS_LIBINTL is not set
 UCLIBC_HAS_WORDEXP=y
 UCLIBC_HAS_XATTR=y
 # UCLIBC_HAS_XLOCALE is not set
