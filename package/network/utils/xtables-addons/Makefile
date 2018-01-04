@@ -44,8 +44,7 @@ CONFIGURE_ARGS+= \
 
 define Build/Compile
 	+$(MAKE) $(PKG_JOBS) -C $(PKG_BUILD_DIR) \
-		ARCH="$(LINUX_KARCH)" \
-		CROSS_COMPILE="$(TARGET_CROSS)" \
+		$(KERNEL_MAKE_FLAGS) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		DEPMOD="/bin/true" \
 		all
@@ -53,8 +52,7 @@ endef
 
 define Build/Install
 	$(MAKE) -C $(PKG_BUILD_DIR) \
-		ARCH="$(LINUX_KARCH)" \
-		CROSS_COMPILE="$(TARGET_CROSS)" \
+		$(KERNEL_MAKE_FLAGS) \
 		DESTDIR="$(PKG_INSTALL_DIR)" \
 		DEPMOD="/bin/true" \
 		install
